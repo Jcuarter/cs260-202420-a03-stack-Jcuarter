@@ -131,6 +131,21 @@ Stack<T>::Stack()
 template<class T>
 Stack<T>::~Stack()
 {
+  if (top == nullptr) {
+    delete top;
+    return
+  } else {
+    StackNode temp = top;
+    StackNode temp2 = top->next;
+    while (temp != nullptr) {
+      delete temp;
+      temp = temp2;
+      if (temp2->next != nullptr) {
+        temp2 = temp2->next
+      }
+    }
+    delete top;
+  }
 }
 
 template<class T>
