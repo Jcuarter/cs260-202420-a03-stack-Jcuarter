@@ -125,6 +125,7 @@ StackNode<T>::StackNode(const T& value): data(value)
 template<class T>
 Stack<T>::Stack()
 {
+  top = nullptr;
 }
 
 template<class T>
