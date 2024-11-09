@@ -141,16 +141,21 @@ Stack<T>::~Stack()
       delete temp;
       temp = temp2;
       if (temp2->next != nullptr) {
-        temp2 = temp2->next
+        temp2 = temp2->next;
       }
     }
-    delete top;
   }
+  return;
 }
 
 template<class T>
 bool Stack<T>::isEmpty() const
 {
+  if (top == nullptr) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 template<class T>
