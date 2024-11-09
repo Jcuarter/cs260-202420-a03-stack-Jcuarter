@@ -115,11 +115,46 @@ template<class T>
 StackNode<T>::StackNode(const T& value): data(value)
 {
   next = nullptr;
+  // data = T(value);
 }
 
 //--------------------------------------------------------------------
 // Stack Implementations
 //--------------------------------------------------------------------
+
+// Stack::Stack(){
+
+// }
+
+// ~Stack();
+
+template<class T>
+bool Stack<T>::isEmpty() const
+{
+}
+
+template<class T>
+void Stack<T>::push(const T& item)
+{
+}
+
+template<class T>
+T Stack<T>::pop()
+{
+}
+
+template<class T>
+T Stack<T>::peek() const
+{
+}
+
+template<class T>
+void Stack<T>::print() const {};
+
+template<class T>
+void Stack<T>::reversePrint() const
+{
+}
 
 //--------------------------------------------------------------------
 // All your code before here
