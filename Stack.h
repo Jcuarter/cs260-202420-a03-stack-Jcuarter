@@ -122,11 +122,15 @@ StackNode<T>::StackNode(const T& value): data(value)
 // Stack Implementations
 //--------------------------------------------------------------------
 
-// Stack::Stack(){
+template<class T>
+Stack<T>::Stack()
+{
+}
 
-// }
-
-// ~Stack();
+template<class T>
+Stack<T>::~Stack()
+{
+}
 
 template<class T>
 bool Stack<T>::isEmpty() const
