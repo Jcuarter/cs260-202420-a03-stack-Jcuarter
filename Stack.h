@@ -176,7 +176,9 @@ T Stack<T>::peek() const
 }
 
 template<class T>
-void Stack<T>::print() const {};
+void Stack<T>::print() const
+{
+}
 
 template<class T>
 void Stack<T>::reversePrint() const
