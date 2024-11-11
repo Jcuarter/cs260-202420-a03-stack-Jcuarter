@@ -19,4 +19,7 @@ int main()
     cout << "Error opening file" << endl;
     return 1;
   }
+  cout << "-----------------------Section 1----------------------" << endl;
+
+  cout << "-----------------------Section 2----------------------" << endl;
 }
