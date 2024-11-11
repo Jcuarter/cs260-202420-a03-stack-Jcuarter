@@ -132,18 +132,12 @@ template<class T>
 Stack<T>::~Stack()
 {
   if (top == nullptr) {
+    return;
+  } else if (top->next == nullptr) {
     delete top;
-    return
+    return;
   } else {
-    StackNode temp = top;
-    StackNode temp2 = top->next;
-    while (temp != nullptr) {
-      delete temp;
-      temp = temp2;
-      if (temp2->next != nullptr) {
-        temp2 = temp2->next;
-      }
-    }
+    // Pop here I assume.
   }
   return;
 }
@@ -163,9 +157,17 @@ void Stack<T>::push(const T& item)
 {
 }
 
+/**
+ * @brief Remove and return top item from stack
+ * @return Item that was at the top of the stack
+ * Can throw exception/blow up with assertion if currently empty
+ */
 template<class T>
 T Stack<T>::pop()
 {
+  if (next == nullptr) {
+    pop();
+  }
 }
 
 template<class T>
