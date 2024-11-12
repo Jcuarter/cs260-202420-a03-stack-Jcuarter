@@ -80,7 +80,7 @@ int main()
       cout << token << endl;
     }
   }
-  if (tags.isEmpty()) {
+  if (!tags.isEmpty()) {
     cout << "ERROR: OPEN TAG LEFTOVER." << endl;
     cout << tags.peek() << " WAS NOT CLOSED." << endl;
   }
