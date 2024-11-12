@@ -44,11 +44,15 @@ int main()
   }
   string token;
   while (inFile.is_open()) {
-    if (token == "</html>") {
+    inFile >> token;
+    if (token == "</html>") { // Ending Token, so stop.
       break;
+    } else if (token.substr(2) == "</") {
+      cout << token << " " << endl;
+    } else if (token.substr(1) == "<") {
+      cout << token << " " << endl;
     } else {
-      inFile >> token;
-      cout << token;
+      cout << token << " ";
     }
   }
 
