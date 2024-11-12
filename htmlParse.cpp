@@ -66,7 +66,7 @@ int main()
   }
   if (tags.isEmpty()) {
     cout << "ERROR: OPEN TAG LEFTOVER." << endl;
-    cout << "Tag: " << tags.peek();
+    cout << tags.peek() << " WAS NOT CLOSED.";
   }
 
   delete &tags;
