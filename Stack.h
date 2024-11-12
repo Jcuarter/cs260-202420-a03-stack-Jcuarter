@@ -195,7 +195,7 @@ void Stack<T>::printHelper(const StackNode<T>* node) const
   if (node == nullptr) {
     return;
   }
-  cout << (node->data) << endl;
+  cout << (node->data) << " ";
   printHelper(node->next);
   return;
 }
@@ -215,7 +215,7 @@ void Stack<T>::reversePrintHelper(const StackNode<T>* node) const
     return;
   }
   reversePrintHelper(node->next);
-  cout << (node->data) << endl;
+  cout << (node->data) << " ";
   if (node == nullptr) {
     return;
   }
