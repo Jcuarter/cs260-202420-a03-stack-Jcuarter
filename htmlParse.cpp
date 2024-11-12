@@ -56,21 +56,16 @@ int main()
         break;
       }
       tags.pop();
+    } else if (token.substr(0, 1) == "<") { // Open Tag.
+      tags.push(token);
+    } else { // Word.
+      tags.reversePrint();
+      cout << token << endl;
     }
   }
-  else if (token.substr(0, 1) == "<")
-  { // Open Tag.
-    tags.push(token);
+  if (tags.isEmpty()) {
+    cout << "ERROR: OPEN TAG LEFTOVER." << endl;
   }
-  else
-  { // Word.
-    tags.reversePrint();
-    cout << token << endl;
-  }
-}
-if (tags.isEmpty()) {
-  cout << "ERROR: OPEN TAG LEFTOVER." << endl;
-}
 
-cout << "END PROGRAM.";
+  cout << "END PROGRAM.";
 }
