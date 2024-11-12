@@ -50,7 +50,7 @@ int main()
       tags.pop();
       break;
     } else if (token.substr(0, 2) == "</") {
-      if (tags.pop().substr(2) != token.substr(1)) {
+      if (tags.pop().substr(1) != token.substr(2)) {
         cout << "ERROR: BAD ENDING TAG." << endl;
         break;
       }
