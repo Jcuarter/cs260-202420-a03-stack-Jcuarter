@@ -85,7 +85,7 @@ public:
    */
   T pop();
 
-  T popAll();
+  void popAll(StackNode<T>* node); // For Deleter
 
   /**
    * @brief Return a copy of the top item on the stack (without removing it)
@@ -139,13 +139,11 @@ Stack<T>::Stack()
 template<class T>
 Stack<T>::~Stack()
 {
-  delete top;
-  // if (top->next == nullptr) {
-  //   delete top;
-  // } else {
-  //   delete pop();
-  // }
-
+  if (top->next == nullptr) {
+    delete top;
+  } else {
+    popAll(top);
+  }
   return;
 }
 
@@ -178,17 +176,15 @@ T Stack<T>::pop()
 }
 
 template<class T>
-T Stack<T>::popAll()
+void Stack<T>::popAll(StackNode<T>* node)
 {
-  if (top == nullptr) {
-    throw;
+  if (node->next == nullptr) {
+    delete node;
   } else {
-    T temp = top->data;
-    StackNode<T>* deleted = top;
-    top = top->next;
-    delete deleted;
-    return temp;
+    popAll(node->next);
+    delete node;
   }
+  return;
 }
 
 template<class T>
