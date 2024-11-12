@@ -139,7 +139,9 @@ Stack<T>::Stack()
 template<class T>
 Stack<T>::~Stack()
 {
-  if (top->next == nullptr) {
+  if (top == nullptr) {
+    return;
+  } else if (top->next == nullptr) {
     delete top;
   } else {
     popAll(top);
