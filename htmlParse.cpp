@@ -47,8 +47,13 @@ int main()
   while (inFile.is_open()) {
     inFile >> token;
     if (token == "</html>") { // Ending Token, so stop.
+      tags.pop();
       break;
     } else if (token.substr(0, 2) == "</") {
+      if (tags.pop().substr(2) != token.substr(1)) {
+        cout << "ERROR: BAD ENDING TAG." << endl;
+        break;
+      }
       tags.pop();
     } else if (token.substr(0, 1) == "<") {
       tags.push(token);
@@ -56,6 +61,9 @@ int main()
       tags.reversePrint();
       cout << token << endl;
     }
+  }
+  if (tags.isEmpty()) {
+    cout << "ERROR: OPEN TAG LEFTOVER." << endl;
   }
 
   cout << "END PROGRAM.";
