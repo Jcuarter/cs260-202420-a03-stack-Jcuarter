@@ -51,11 +51,12 @@ int main()
       tags.pop();
       break;
     } else if (token.substr(0, 2) == "</") { // Closing Tag.
-      if (tags.peek().substr(1) != token.substr(2)) {
+      if (tags.pop().substr(1) != token.substr(2)) {
         cout << "ERROR: BAD ENDING TAG." << endl;
+        // Error Only Shows Up While Popping, So can be late(?).
+        // Idk, I think it's fine honestly.
         break;
       }
-      tags.pop();
     } else if (token.substr(0, 1) == "<") { // Open Tag.
       tags.push(token);
     } else { // Word.
