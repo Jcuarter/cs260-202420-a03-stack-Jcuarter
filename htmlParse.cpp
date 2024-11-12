@@ -42,13 +42,13 @@ int main()
     cout << "Error opening file" << endl;
     return 1;
   }
-  string taco;
+  string token;
   while (inFile.is_open()) {
-    if (taco == "</html>") {
+    if (token == "</html>") {
       break;
     } else {
-      inFile >> taco;
-      cout << taco;
+      inFile >> token;
+      cout << token;
     }
   }
 
