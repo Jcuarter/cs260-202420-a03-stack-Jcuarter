@@ -85,6 +85,8 @@ public:
    */
   T pop();
 
+  T popAll();
+
   /**
    * @brief Return a copy of the top item on the stack (without removing it)
    * @return Item that is at the top of the stack
@@ -163,6 +165,20 @@ void Stack<T>::push(const T& item)
 
 template<class T>
 T Stack<T>::pop()
+{
+  if (top == nullptr) {
+    throw;
+  } else {
+    T temp = top->data;
+    StackNode<T>* deleted = top;
+    top = top->next;
+    delete deleted;
+    return temp;
+  }
+}
+
+template<class T>
+T Stack<T>::popAll()
 {
   if (top == nullptr) {
     throw;
