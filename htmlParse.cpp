@@ -15,20 +15,6 @@ using namespace std;
 
 int main()
 {
-  ifstream inFile("Document.html");
-  string taco;
-  while (inFile.is_open()) {
-    if (!inFile.is_open()) {
-      cout << "Error opening file" << endl;
-      return 1;
-    } else if (taco == "</html>") {
-      break;
-    } else {
-      inFile >> taco;
-      cout << taco;
-    }
-  }
-
   cout << "-----------------------Section 1----------------------" << endl;
   Stack<int> test;
   cout << "Empty?: " << test.isEmpty() << endl;
@@ -51,7 +37,19 @@ int main()
 
   cout << "-----------------------Section 2----------------------" << endl;
 
-  // test;
+  ifstream inFile("Document.html");
+  string taco;
+  while (inFile.is_open()) {
+    if (!inFile.is_open()) {
+      cout << "Error opening file" << endl;
+      return 1;
+    } else if (taco == "</html>") {
+      break;
+    } else {
+      inFile >> taco;
+      cout << taco;
+    }
+  }
 
   cout << "END PROGRAM.";
 }
