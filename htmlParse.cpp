@@ -38,6 +38,7 @@ int main()
   cout << "-----------------------Section 2----------------------" << endl;
 
   ifstream inFile("Document.html");
+  Stack<string> tags;
   if (!inFile.is_open()) {
     cout << "Error opening file" << endl;
     return 1;
@@ -45,14 +46,14 @@ int main()
   string token;
   while (inFile.is_open()) {
     inFile >> token;
-    // cout << "Debug: " << token.substr(0, 2) << endl;
     if (token == "</html>") { // Ending Token, so stop.
       break;
     } else if (token.substr(0, 2) == "</") {
-      cout << token << " " << endl;
+      tags.pop();
     } else if (token.substr(0, 1) == "<") {
-      cout << token << " " << endl;
+      tags.push(token);
     } else {
+      tags.reversePrint();
       cout << token << " ";
     }
   }
