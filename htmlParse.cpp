@@ -38,12 +38,13 @@ int main()
   cout << "-----------------------Section 2----------------------" << endl;
 
   ifstream inFile("Document.html");
+  if (!inFile.is_open()) {
+    cout << "Error opening file" << endl;
+    return 1;
+  }
   string taco;
   while (inFile.is_open()) {
-    if (!inFile.is_open()) {
-      cout << "Error opening file" << endl;
-      return 1;
-    } else if (taco == "</html>") {
+    if (taco == "</html>") {
       break;
     } else {
       inFile >> taco;
