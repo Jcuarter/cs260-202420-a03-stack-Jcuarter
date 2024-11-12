@@ -54,7 +54,6 @@ int main()
         cout << "ERROR: BAD ENDING TAG." << endl;
         break;
       }
-      tags.pop();
     } else if (token.substr(0, 1) == "<") {
       tags.push(token);
     } else {
