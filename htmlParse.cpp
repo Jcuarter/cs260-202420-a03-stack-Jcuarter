@@ -67,7 +67,7 @@ int main()
     } else if (checkToken(token) == 1) { // Closing Tag.
       if (tags.peek().substr(1) != token.substr(2)) {
         cout << "ERROR: BAD ENDING TAG." << endl;
-        cout << token << " DOES NOT CLOSE " << tags.peek();
+        cout << token << " DOES NOT CLOSE " << tags.peek() << endl;
         // Error Only Shows Up While Popping, So can be late(?).
         // Idk, I think it's fine honestly.
         break;
