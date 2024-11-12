@@ -45,7 +45,7 @@ int main()
   string token;
   while (inFile.is_open()) {
     inFile >> token;
-    cout << token.substr(2) << endl;
+    cout << "Debug" << token.substr(0, 2) << endl;
     if (token == "</html>") { // Ending Token, so stop.
       break;
     } else if (token.substr(2) == "</") {
