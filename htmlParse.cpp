@@ -20,7 +20,8 @@ int checkToken(string token)
   } else if ((token.substr(0, 2) == "</")
              and token.substr((token.size() - 1)) == ">") {
     return 1; // Close Tag
-  } else if ((token.substr(0, 1) == "<")) {
+  } else if ((token.substr(0, 1) == "<")
+             and token.substr((token.size() - 1)) == ">") {
     return 2; // Open Tag
   } else {
     return 3; // Text, Unused, but I feel I should add it.
