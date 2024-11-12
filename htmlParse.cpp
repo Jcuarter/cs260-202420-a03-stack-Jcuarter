@@ -48,7 +48,7 @@ int main()
   }
   cout << endl << "Normal Direction: " << endl;
   test.print();
-  cout << "Reverse Direction: " << endl;
+  cout << endl << "Reverse Direction: " << endl;
   test.reversePrint();
 
   cout << "-----------------------Section 2----------------------" << endl;
