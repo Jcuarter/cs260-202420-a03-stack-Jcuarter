@@ -54,7 +54,7 @@ int main()
       tags.push(token);
     } else {
       tags.reversePrint();
-      cout << token << " ";
+      cout << token << endl;
     }
   }
 
