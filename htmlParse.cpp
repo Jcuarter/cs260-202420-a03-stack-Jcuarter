@@ -13,6 +13,20 @@
 
 using namespace std;
 
+int checkToken(string token)
+{
+  if (token == "</html>") {
+    return 0; // Ending
+  } else if ((token.substr(0, 2) == "</")
+             and token.substr((token.size() - 1)) == ">") {
+    return 1; // Close Tag
+  } else if ((token.substr(0, 1) == "<")) {
+    return 2; // Open Tag
+  } else {
+    return 3; // Text, Unused, but I feel I should add it.
+  }
+}
+
 int main()
 {
   cout << "-----------------------Section 1----------------------" << endl;
@@ -47,10 +61,10 @@ int main()
   while (inFile.is_open()) {
     inFile >> token;
 
-    if (token == "</html>") { // Ending Token, so stop.
+    if (checkToken(token) == 0) { // Ending Token, so stop.
       tags.pop();
       break;
-    } else if (token.substr(0, 2) == "</") { // Closing Tag.
+    } else if (checkToken(token) == 1) { // Closing Tag.
       if (tags.peek().substr(1) != token.substr(2)) {
         cout << "ERROR: BAD ENDING TAG." << endl;
         cout << token << " DOES NOT CLOSE " << tags.peek();
@@ -58,8 +72,8 @@ int main()
         // Idk, I think it's fine honestly.
         break;
       }
-      tags.pop()
-    } else if (token.substr(0, 1) == "<") { // Open Tag.
+      tags.pop();
+    } else if (checkToken(token) == 2) { // Open Tag.
       tags.push(token);
     } else { // Word.
       tags.reversePrint();
