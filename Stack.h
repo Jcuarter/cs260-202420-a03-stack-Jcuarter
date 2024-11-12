@@ -199,7 +199,6 @@ template<class T>
 void Stack<T>::print() const
 {
   printHelper(top);
-  // cout << endl << endl;
   return;
 }
 
@@ -218,7 +217,6 @@ template<class T>
 void Stack<T>::reversePrint() const
 {
   reversePrintHelper(top);
-  // cout << endl << endl;
   return;
 }
 
