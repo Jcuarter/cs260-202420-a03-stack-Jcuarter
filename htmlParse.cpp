@@ -46,26 +46,31 @@ int main()
   string token;
   while (inFile.is_open()) {
     inFile >> token;
-    if (tags.peek().substr(1) != token.substr(2)) {
-      cout << "ERROR: BAD ENDING TAG." << endl;
-      break;
 
-      if (token == "</html>") { // Ending Token, so stop.
-        tags.pop();
+    if (token == "</html>") { // Ending Token, so stop.
+      tags.pop();
+      break;
+    } else if (token.substr(0, 2) == "</") { // Closing Tag.
+      if (tags.peek().substr(1) != token.substr(2)) {
+        cout << "ERROR: BAD ENDING TAG." << endl;
         break;
-      } else if (token.substr(0, 2) == "</") {
-        tags.pop();
       }
-    } else if (token.substr(0, 1) == "<") {
-      tags.push(token);
-    } else {
-      tags.reversePrint();
-      cout << token << endl;
+      tags.pop();
     }
   }
-  if (tags.isEmpty()) {
-    cout << "ERROR: OPEN TAG LEFTOVER." << endl;
+  else if (token.substr(0, 1) == "<")
+  { // Open Tag.
+    tags.push(token);
   }
+  else
+  { // Word.
+    tags.reversePrint();
+    cout << token << endl;
+  }
+}
+if (tags.isEmpty()) {
+  cout << "ERROR: OPEN TAG LEFTOVER." << endl;
+}
 
-  cout << "END PROGRAM.";
+cout << "END PROGRAM.";
 }
