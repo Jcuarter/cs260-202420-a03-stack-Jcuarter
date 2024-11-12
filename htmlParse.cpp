@@ -14,6 +14,7 @@
 using namespace std;
 
 int checkToken(string token)
+// Added this so I could check for both brackets without main looking ugly.
 {
   if (token == "</html>") {
     return 0; // Ending
