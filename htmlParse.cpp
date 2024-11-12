@@ -21,6 +21,8 @@ int main()
     if (!inFile.is_open()) {
       cout << "Error opening file" << endl;
       return 1;
+    } else if (taco == "</html>") {
+      break;
     } else {
       inFile >> taco;
       cout << taco;
