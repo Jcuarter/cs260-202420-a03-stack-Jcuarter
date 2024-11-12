@@ -85,6 +85,5 @@ int main()
     cout << tags.peek() << " WAS NOT CLOSED." << endl;
   }
 
-  delete &tags;
   cout << "END PROGRAM.";
 }
