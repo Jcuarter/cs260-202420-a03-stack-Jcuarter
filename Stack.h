@@ -9,6 +9,8 @@
 #define STACK_H
 
 #include <iostream>
+using std::cout;
+using std::endl;
 
 // Turn loops off for the duration of this file.
 // You are to use recursion for any repetition.
@@ -94,10 +96,14 @@ public:
    */
   void print() const;
 
+  void printHelper(const StackNode<T>* node) const;
+
   /**
    * @brief Output the stack in reverse order to cout
    */
   void reversePrint() const;
+
+  void reversePrintHelper(const StackNode<T>* node) const;
 };
 
 //--------------------------------------------------------------------
@@ -131,58 +137,88 @@ Stack<T>::Stack()
 template<class T>
 Stack<T>::~Stack()
 {
-  if (top == nullptr) {
-    return;
-  } else if (top->next == nullptr) {
-    delete top;
-    return;
-  } else {
-    // Pop here I assume.
-  }
+  delete top;
+  // if (top->next == nullptr) {
+  //   delete top;
+  // } else {
+  //   delete pop();
+  // }
+
   return;
 }
 
 template<class T>
 bool Stack<T>::isEmpty() const
 {
-  if (top == nullptr) {
-    return true;
-  } else {
-    return false;
-  }
+  return top == nullptr;
 }
 
 template<class T>
 void Stack<T>::push(const T& item)
 {
+  StackNode<T>* input = new StackNode<T>(item);
+  input->next = top;
+  top = input;
 }
 
-/**
- * @brief Remove and return top item from stack
- * @return Item that was at the top of the stack
- * Can throw exception/blow up with assertion if currently empty
- */
 template<class T>
 T Stack<T>::pop()
 {
-  if (next == nullptr) {
-    pop();
+  if (top == nullptr) {
+    throw;
+  } else {
+    T temp = top->data;
+    StackNode<T>* deleted = top;
+    top = top->next;
+    delete deleted;
+    return temp;
   }
 }
 
 template<class T>
 T Stack<T>::peek() const
 {
+  return top->data;
 }
 
 template<class T>
 void Stack<T>::print() const
 {
+  printHelper(top);
+  cout << endl << endl;
+  return;
+}
+
+template<class T>
+void Stack<T>::printHelper(const StackNode<T>* node) const
+{
+  if (node == nullptr) {
+    return;
+  }
+  cout << (node->data) << endl;
+  printHelper(node->next);
+  return;
 }
 
 template<class T>
 void Stack<T>::reversePrint() const
 {
+  reversePrintHelper(top);
+  cout << endl << endl;
+  return;
+}
+
+template<class T>
+void Stack<T>::reversePrintHelper(const StackNode<T>* node) const
+{
+  if (node == nullptr) {
+    return;
+  }
+  reversePrintHelper(node->next);
+  cout << (node->data) << endl;
+  if (node == nullptr) {
+    return;
+  }
 }
 
 //--------------------------------------------------------------------
