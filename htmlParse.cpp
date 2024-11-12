@@ -46,13 +46,15 @@ int main()
   string token;
   while (inFile.is_open()) {
     inFile >> token;
-    if (token == "</html>") { // Ending Token, so stop.
-      tags.pop();
+    if (tags.peek().substr(1) != token.substr(2)) {
+      cout << "ERROR: BAD ENDING TAG." << endl;
       break;
-    } else if (token.substr(0, 2) == "</") {
-      if (tags.pop().substr(1) != token.substr(2)) {
-        cout << "ERROR: BAD ENDING TAG." << endl;
+
+      if (token == "</html>") { // Ending Token, so stop.
+        tags.pop();
         break;
+      } else if (token.substr(0, 2) == "</") {
+        tags.pop();
       }
     } else if (token.substr(0, 1) == "<") {
       tags.push(token);
